@@ -14,13 +14,18 @@ function getCloudWatchClient() {
 }
 
 function getDynamoDocumentClientInternal() {
-    const client = new DynamoDBClient(getClientConfiguration());
+    const clientConfig = getClientConfiguration();
+    console.log("Creating DynamoDB client with config: " + JSON.stringify(clientConfig, null, 2));
 
+    const client = new DynamoDBClient(clientConfig);
     return new DynamoDBDocumentClient(client)
 }
 
 function getCloudWatchClientInternal() {
-    return new CloudWatchClient(getClientConfiguration())
+    const clientConfig = getClientConfiguration();
+    console.log("Creating CloudWatch client with config: " + JSON.stringify(clientConfig, null, 2));
+
+    return new CloudWatchClient(clientConfig)
 }
 
 function getClientConfiguration() {
