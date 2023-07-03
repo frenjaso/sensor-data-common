@@ -30,6 +30,10 @@ function getCloudWatchClientInternal() {
 
 function getClientConfiguration() {
     if (isLocalEnv()) {
+        validateLocalVariable(process.env.localAwsRegion, "localAwsRegion");
+        validateLocalVariable(process.env.localAccessKeyId, "localAccessKeyId");
+        validateLocalVariable(process.env.localSecretAccessKey, "localSecretAccessKey");
+
         return {
             region: process.env.localAwsRegion,
             credentials: {
@@ -38,9 +42,18 @@ function getClientConfiguration() {
             }
         }
     } else {
+        if (process.env.AWS_REGION === undefined) {
+            throw new Error("Environment is not local, but 'AWS_REGION' is not defined");
+        }
         return {
             region: process.env.AWS_REGION
         }
+    }
+}
+
+function validateLocalVariable(variable, variableName) {
+    if (variable === undefined) {
+        throw new Error(`Environment is local, but '${variableName}' is not defined`);
     }
 }
 
