@@ -2,8 +2,6 @@ import {DynamoDBClient} from "@aws-sdk/client-dynamodb";
 import {DynamoDBDocumentClient} from "@aws-sdk/lib-dynamodb";
 import { CloudWatchClient } from "@aws-sdk/client-cloudwatch";
 
-const defaultAwsRegion = "us-east-1";
-
 const dynamoDbClient = getDynamoDocumentClientInternal();
 const cloudWatchClient = getCloudWatchClientInternal();
 
@@ -36,7 +34,7 @@ function getClientConfiguration() {
         }
     } else {
         return {
-            region: defaultAwsRegion
+            region: process.env.AWS_REGION
         }
     }
 }
