@@ -2,7 +2,7 @@
   "name": "@frenjaso/sensor-data-common",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
     "clientsTest": "/usr/local/bin/node ./test/clientsTest.mjs"
   },
