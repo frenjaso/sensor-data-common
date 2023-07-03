@@ -1,0 +1,17 @@
+{
+  "name": "@frenjaso/sensor-data-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clientsTest": "/usr/local/bin/node ./test/clientsTest.mjs"
+  },
+  "author": "Jason French",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.363.0",
+    "@aws-sdk/client-dynamodb": "^3.363.0",
+    "@aws-sdk/lib-dynamodb": "^3.363.0"
+  }
+}
